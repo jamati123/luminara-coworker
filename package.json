@@ -21,7 +21,16 @@
         "command": "luminara-coworker.statusBarClicked",
         "title": "clicked statusbar"
       }
-    ]
+    ],
+    "icons": {
+      "luminara-icon": {
+        "description": "luminara icon",
+        "default": {
+          "fontPath": "iconmonstr-caret-down-circle-lined.svg",
+          "fontCharacter": "\\E001"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

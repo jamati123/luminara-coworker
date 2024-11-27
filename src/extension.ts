@@ -41,45 +41,47 @@ function createStatusbarItem(context: vscode.ExtensionContext) {
 		
 		if (pageType === 'chat') {
 
-
-			const chat = vscode.window.createInputBox();	
+			
+			const chat = vscode.window.createInputBox();	// Create Inout field for prompt
 			chat.title = 'Chat with coworker';
 			chat.placeholder = 'Type message here';
-			chat.onDidAccept(() => {
-				const message = chat.value;
-				chat.value = '';
-				chat.hide();
-				axios.post('http://10.10.11.11:5000/ask_ollama', {
+			chat.onDidAccept(() => {			//when user press enter
+				const message = chat.value;	//get the message
+				chat.value = '';   //clear the input field
+				axios.post('http://10.10.11.11:5000/ask_programming_bot', { // sending message to the server
 					prompt: message,
-				}).then((response) => {
-					const responseData = response.data;
-					vscode.window.showInformationMessage(responseData);
+				}).then((response) => {	//if server response is success
+					const responseData = JSON.stringify(response.data);
+					
+					vscode.window.showInformationMessage("responseData: " + responseData);
 					console.log(responseData);
-					if (!responseData) {
+					if (!responseData) { //if response is null
 						console.log('response is null');
-					}
-				}).catch((error) => {
+					} 
+				}).catch((error) => { //if server response is failed
 					vscode.window.showErrorMessage('Failed to send message');
 					console.error(error);
 				});
 				console.log(message);
 			});
 			
-
+			// Display the input field
 			chat.show();
 		}
+
 		if (pageType === 'fetch rows, list in table') {
 			console.log('fetch rows, list in table');
 		}
 	}));
 
 	
-
+	// define the status bar item and Configuring the status bar item
 	const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-	statusBarItem.command = commandId;
+	statusBarItem.command = commandId;	
 
 	context.subscriptions.push(statusBarItem);
 	// Set the text and show the status bar item
+	statusBarItem.text = '$(luminara-icon)'; 
 	statusBarItem.text = 'Luminara Coworker';
 	statusBarItem.tooltip = 'view coworker';
 	statusBarItem.show();
