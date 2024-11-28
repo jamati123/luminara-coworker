@@ -12,22 +12,50 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "chatParticipants": [
+      { 
+        "id": "luminara-coworker.chatGPT-04",
+        "fullName": "Luminara Coworker - GPT-04",
+        "name": "CoworkerGPT-04",
+        "description": "bot",
+        "isSticky": true
+      },
+      { 
+        "id": "luminara-coworker.chatOllama",
+        "fullName": "Luminara Coworker - Ollama",
+        "name": "Coworker-llma",
+        "description": "bot",
+        "isSticky": true
+      }
+    ],
     "commands": [
       {
         "command": "luminara-coworker.helloWorld",
         "title": "Hello World"
       },
       {
+        "command": "luminara-coworker.pickModel",
+        "title": "pick Model"
+      },
+      {
         "command": "luminara-coworker.statusBarClicked",
         "title": "clicked statusbar"
+      },
+      {
+        "command": "luminara-coworker.luminaraChatGPT-04",
+        "title": "Luminara Chat GPT-04"
+      },
+      {
+        "command": "luminara-coworker.luminaraChatOllama",
+        "title": "Luminara Chat Ollama"
       }
     ],
     "icons": {
       "luminara-icon": {
-        "description": "luminara icon",
+        "description": "luminara-icon",
         "default": {
-          "fontPath": "iconmonstr-caret-down-circle-lined.svg",
-          "fontCharacter": "\\E001"
+          "fontPath": "fontello.woff",
+          "fontCharacter": "\\E900"
         }
       }
     }
