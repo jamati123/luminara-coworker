@@ -1,16 +1,16 @@
 import * as vscode from 'vscode';
 import axios from 'axios';
-
+import { luminaraChat } from './luminaraChat';
 
 export function createStatusbarItem(context: vscode.ExtensionContext) {
 	// Create a status bar item
 	const commandId = 'luminara-coworker.statusBarClicked';
 	context.subscriptions.push(vscode.commands.registerCommand(commandId, async () => {
 		const pageType = await vscode.window.showQuickPick(
-			['chat', 'fetch rows, list in table'],
+			['Message', 'Chat GPT-04', 'Chat Ollama'],
 			{ placeHolder: 'select type of web page to make' });
 		
-		if (pageType === 'chat') {
+		if (pageType === 'Message') {
 
 			
 			const chat = vscode.window.createInputBox();	// Create Inout field for prompt
@@ -35,14 +35,22 @@ export function createStatusbarItem(context: vscode.ExtensionContext) {
 				});
 				console.log(message);
 			});
-			
+            
 			// Display the input field
+
 			chat.show();
 		}
 
-		if (pageType === 'fetch rows, list in table') {
-			console.log('fetch rows, list in table');
+		if (pageType === 'Chat GPT-04') {
+            
+            vscode.commands.executeCommand("workbench.action.chat.open", "@CoworkerGPT-04");
+
 		}
+        if (pageType === 'Chat Ollama') {
+            
+            vscode.commands.executeCommand("workbench.action.chat.open", "@Coworker-llma hallo");
+        }
+
 	}));
 
 	
@@ -52,8 +60,8 @@ export function createStatusbarItem(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(statusBarItem);
 	// Set the text and show the status bar item
-	statusBarItem.text = '$(luminara-icon)'; 
-	statusBarItem.text = 'Luminara Coworker';
+	statusBarItem.text = "Luminara Coworker"; 
+    
 	statusBarItem.tooltip = 'view coworker';
 	statusBarItem.show();
 

@@ -54,7 +54,7 @@
       "luminara-icon": {
         "description": "luminara-icon",
         "default": {
-          "fontPath": "fontello.woff",
+          "fontPath": "Luminara-AI_Logo.woff",
           "fontCharacter": "\\E900"
         }
       }

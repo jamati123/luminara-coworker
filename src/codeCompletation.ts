@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+/* import * as vscode from 'vscode';
 
 
 export async function codeComplete(context: vscode.ExtensionContext ) {
@@ -49,3 +49,5 @@ try {
 }
 
 }
+
+*/
