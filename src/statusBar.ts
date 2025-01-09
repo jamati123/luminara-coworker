@@ -1,14 +1,13 @@
 import * as vscode from 'vscode';
 import axios from 'axios';
-import { luminaraChat } from './luminaraChat';
 
 export function createStatusbarItem(context: vscode.ExtensionContext) {
 	// Create a status bar item
 	const commandId = 'luminara-coworker.statusBarClicked';
 	context.subscriptions.push(vscode.commands.registerCommand(commandId, async () => {
 		const pageType = await vscode.window.showQuickPick(
-			['Message', 'Chat GPT-04', 'Chat Ollama'],
-			{ placeHolder: 'select type of web page to make' });
+			['Message', 'Chat GPT-04', 'Chat Ollama', 'Inline chat'],
+			{ placeHolder: 'select a function' });
 		
 		if (pageType === 'Message') {
 
@@ -43,14 +42,18 @@ export function createStatusbarItem(context: vscode.ExtensionContext) {
 
 		if (pageType === 'Chat GPT-04') {
             
-            vscode.commands.executeCommand("workbench.action.chat.open", "@CoworkerGPT-04");
+            vscode.commands.executeCommand("luminara-coworker.luminaraChatGPT-04");
 
 		}
         if (pageType === 'Chat Ollama') {
-            
-            vscode.commands.executeCommand("workbench.action.chat.open", "@Coworker-llma hallo");
-        }
 
+            vscode.commands.executeCommand("luminara-coworker.luminaraChatOllama");
+         
+        }
+		if (pageType === 'Inline chat') {
+			
+			vscode.commands.executeCommand("luminara_coworker.startInlineChat");
+		}
 	}));
 
 	

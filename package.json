@@ -13,25 +13,61 @@
   "main": "./out/extension.js",
   "contributes": {
     "chatParticipants": [
-      { 
+      {
         "id": "luminara-coworker.chatGPT-04",
         "fullName": "Luminara Coworker - GPT-04",
         "name": "CoworkerGPT-04",
         "description": "bot",
         "isSticky": true
       },
-      { 
+      {
         "id": "luminara-coworker.chatOllama",
         "fullName": "Luminara Coworker - Ollama",
         "name": "Coworker-llma",
         "description": "bot",
         "isSticky": true
+      },
+      {
+        "id": "luminara-coworker.luminaraChatGPT-04Inline-helper",
+        "fullName": "Luminara Coworker - Ollama",
+        "name": "Coworker-llma-04Inline",
+        "description": "bot",
+        "isSticky": true
       }
     ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "luminara-coworker.helloWorld",
+          "group": "navigation"
+        },
+        {
+          "command": "luminara-coworker.pickModel",
+          "group": "navigation"
+        },
+      
+        {
+          "command": "luminara-coworker.statusBarClicked",
+          "group": "navigation"
+        },
+        {
+          "command": "luminara-coworker.luminaraChatGPT-04",
+          "group": "navigation"
+        },
+        {
+          "command": "luminara-coworker.luminaraChatOllama",
+          "group": "navigation"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "luminara-coworker.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "luminara_coworker.startInlineChat",
+        "title": "Luminara Chat GPT-04 Inline"
       },
       {
         "command": "luminara-coworker.pickModel",
@@ -45,6 +81,7 @@
         "command": "luminara-coworker.luminaraChatGPT-04",
         "title": "Luminara Chat GPT-04"
       },
+
       {
         "command": "luminara-coworker.luminaraChatOllama",
         "title": "Luminara Chat Ollama"
@@ -80,6 +117,7 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
+    "@vscode/prompt-tsx": "^0.3.0-alpha.13",
     "axios": "^1.7.8"
   }
 }

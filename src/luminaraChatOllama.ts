@@ -37,7 +37,7 @@ export async function luminaraChatOllama(context: vscode.ExtensionContext ) {
       };
 
       // send the request to the server
-      const chatResponse = await axios.post('http://10.10.11.11:5000/ask_programming_bot', payload).then((response) => {
+      const chatResponse = await axios.post('http://10.10.11.11:5001/ask_programming_bot', payload).then((response) => {
 
       return response.data.choices[0].text;
 					

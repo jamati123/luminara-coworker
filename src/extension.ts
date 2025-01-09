@@ -6,6 +6,8 @@ import { createStatusbarItem } from './statusBar';
 // import { codeComplete } from './codeCompletation';
 import { luminaraChat } from './luminaraChat';
 import { luminaraChatOllama } from './luminaraChatOllama';
+import { createInlineChat } from './inline_chat';
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -19,6 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 	createStatusbarItem(context);
 	luminaraChat(context);
 	luminaraChatOllama(context);
+	createInlineChat(context);
 
 
 
