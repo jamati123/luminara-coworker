@@ -3,7 +3,6 @@ import axios from 'axios';
 import { json } from 'stream/consumers';
 
 
-
 export async function luminaraChatOllama(context: vscode.ExtensionContext ) {
 
     const commandId = 'luminara-coworker.luminaraChatOllama'; // define the command
